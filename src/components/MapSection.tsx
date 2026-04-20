@@ -101,11 +101,15 @@ export default function MapSection() {
     <div className="grid gap-6 lg:grid-cols-2">
       <div className="space-y-4">
         <div className="rounded-xl border p-4">
-          <label className="mb-2 block text-sm font-medium">
+          <label
+            htmlFor="pollution-filter"
+            className="mb-2 block text-sm font-medium"
+          >
             Фільтр за рівнем забруднення
           </label>
 
           <select
+            id="pollution-filter"
             value={filter}
             onChange={(event) =>
               handleFilterChange(event.target.value as FilterValue)
@@ -125,31 +129,33 @@ export default function MapSection() {
           onSelectStation={setSelectedStation}
         />
 
-        <div className="space-y-3 rounded-xl border p-4">
-          {selectedStation ? (
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <p>
-                Обрана станція:{" "}
-                <span className="font-semibold">{selectedStation.name}</span>
-              </p>
+        <div className="min-h-[140px] rounded-xl border p-4">
+          <div className="flex h-full flex-col justify-between gap-3">
+            {selectedStation ? (
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <p>
+                  Обрана станція:{" "}
+                  <span className="font-semibold">{selectedStation.name}</span>
+                </p>
 
-              <button
-                onClick={handleResetSelection}
-                className="rounded-lg bg-slate-900 px-4 py-2 text-white transition hover:bg-slate-700"
-              >
-                Скинути вибір
-              </button>
-            </div>
-          ) : (
-            <p>Оберіть станцію на карті.</p>
-          )}
+                <button
+                  onClick={handleResetSelection}
+                  className="rounded-lg bg-slate-900 px-4 py-2 text-white transition hover:bg-slate-700"
+                >
+                  Скинути вибір
+                </button>
+              </div>
+            ) : (
+              <p>Оберіть станцію на карті.</p>
+            )}
 
-          <button
-            onClick={handleExportData}
-            className="rounded-lg border px-4 py-2 transition hover:bg-slate-100"
-          >
-            Експорт даних
-          </button>
+            <button
+              onClick={handleExportData}
+              className="rounded-lg border px-4 py-2 transition hover:bg-slate-100"
+            >
+              Експорт даних
+            </button>
+          </div>
         </div>
 
         <div className="rounded-xl border p-4">

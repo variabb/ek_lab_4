@@ -17,8 +17,6 @@ export function middleware(request: NextRequest) {
     duration,
   };
 
-  console.log(JSON.stringify(log));
-
   return response;
 }
 export const config = {
